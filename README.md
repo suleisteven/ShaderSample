@@ -1,5 +1,23 @@
-### 灰度算法（算法思路：对每个像素颜色进行采样，然后改变rgb值，乘上灰度图的公认常量）
+### 什么是Shader？
 ```
+Shaders是一段GLSL小程序，运行在GPU上而非CPU。它们使用OpenGL Shading Language (GLSL)语言编写，看上去像C或C++，
+但却是另外一种不同的语言。使用shader就像你写个普通程序一样：写代码编译，最，后链接在一起才生成最终的程序。
+```
+
+### Shader中的数据类型
+```
+基础数据类型：int、float、double、uint、bool
+两种容器：向量(Vector)和矩阵(Matrix)
+GLSL中的向量是一个可以包含有1、2、3或者4个分量的容器，分量的类型可以是前面默认基础类型的任意一个。它们可以是下面的形式（n代表分量的数量）：vecn,bvecn,ivecn,uvecn,dvecn;
+大多数时候我们使用vecn，因为float足够满足大多数要求了。一个向量的分量可以通过vec.x这种方式获取，这里x是指这个向量的第一个分量。
+你可以分别使用.x、.y、.z和.w来获取它们的第1、2、3、4个分量。GLSL也允许你对颜色使用rgba，或是对纹理坐标使用stpq访问相同的分量
+```
+
+
+
+## 实例
+### 灰度算法（算法思路：对每个像素颜色进行采样，然后改变rgb值，乘上灰度图的公认常量）
+```shader
 varying vec4 v_fragmentColor;
 varying vec2 v_texCoord;
 void main()
@@ -11,7 +29,7 @@ void main()
 ```
 
 ### 水平镜像（算法思路：判断纹理坐标x位置，如果超过一半，则使用左半边对称的坐标点，然后对图像进行采样）
-```
+```shader
 varying vec2 v_texCoord;
 varying vec4 v_fragmentColor;
 void main()
@@ -28,7 +46,7 @@ void main()
 ```
 
 ### 垂直镜像（算法思路：判断纹理坐标y位置，如果超过一半，则使用左半边对称的坐标点，然后对图像进行采样）
-```
+```shader
 varying vec2 v_texCoord;
 varying vec4 v_fragmentColor;
 void main()
@@ -45,7 +63,7 @@ void main()
 ```
 
 ### 颜色翻转（算法思路：对每个像素颜色进行采样，然后改变rgb值，将rgb的颜色值进行反转）
-```
+```shader
 varying vec2 v_texCoord;
 varying vec4 v_fragmentColor;
 void main()
@@ -57,7 +75,7 @@ void main()
 ```
 
 ### 旋涡
-```
+```shader
 precision highp float;
 varying vec4 v_fragmentColor;
 varying vec2 v_texCoord;
@@ -89,7 +107,7 @@ void main(){
 
 ### 高斯模糊（"模糊"，就是将图像中每个像素值进行重置的过程，这个过程采用将每一个像素都设置成周边像素的平均值；高斯模糊将周边像素按照权重值进行计算相加）
 
-```
+```shader
 precision mediump float;
 varying vec2 v_texCoord;
 const float resolution = 1000.0;
