@@ -1,17 +1,16 @@
 ### 什么是Shader？
-```
-Shaders是一段GLSL小程序，运行在GPU上而非CPU。它们使用OpenGL Shading Language (GLSL)语言编写，看上去像C或C++，
-但却是另外一种不同的语言。使用shader就像你写个普通程序一样：写代码编译，最，后链接在一起才生成最终的程序。
-```
+
+Shaders是一段GLSL小程序，运行在GPU上而非CPU。它们使用OpenGL Shading Language (GLSL)语言编写，看上去像C或C++，但却是另外一种不同的语言。使用shader就像你写个普通程序一样：写代码编译，最，后链接在一起才生成最终的程序。
+
 
 ### Shader中的数据类型
-```
-基础数据类型：int、float、double、uint、bool
-两种容器：向量(Vector)和矩阵(Matrix)
-GLSL中的向量是一个可以包含有1、2、3或者4个分量的容器，分量的类型可以是前面默认基础类型的任意一个。它们可以是下面的形式（n代表分量的数量）：vecn,bvecn,ivecn,uvecn,dvecn;
-大多数时候我们使用vecn，因为float足够满足大多数要求了。一个向量的分量可以通过vec.x这种方式获取，这里x是指这个向量的第一个分量。
-你可以分别使用.x、.y、.z和.w来获取它们的第1、2、3、4个分量。GLSL也允许你对颜色使用rgba，或是对纹理坐标使用stpq访问相同的分量
-```
+
+基础数据类型：int、float、double、uint、bool  
+两种容器：向量(Vector)和矩阵(Matrix)  
+GLSL中的向量是一个可以包含有1、2、3或者4个分量的容器，分量的类型可以是前面默认基础类型的任意一个。它们可以是下面的形式（n代表分量的数量）：vecn,bvecn,ivecn,uvecn,dvecn;  
+大多数时候我们使用vecn，因为float足够满足大多数要求了。一个向量的分量可以通过vec.x这种方式获取，这里x是指这个向量的第一个分量。你可以分别使用.x、.y、.z和.w来获取它们的第1、2、3、4个分量。GLSL也允许你对颜色使用rgba，或是对纹理坐标使用stpq访问相同的分量
+
+
 
 
 
