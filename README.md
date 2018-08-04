@@ -29,6 +29,30 @@ gl_FragColor：vec4
 输出的颜色用于之后的像素操作，在片段着色器脚本中处理完成后对它进行赋值。
 
 
+### 一段简单的Shader程序
+VertexShader：  
+```shader
+attribute vec4 position; // 由OpenGL API传入的绘图形状顶点坐标  
+attribute vec4 inputTextureCoordinate; //由OpenGL API传入的贴图UV顶点  
+varying vec2 textureCoordinate; // 与FragmentShader共用的变量，贴图坐标，在VertexShader中赋值，然后在FragmentShader中使用
+void main()
+{
+	gl_Position = position;
+	textureCoordinate = inputTextureCoordinate.xy;
+}
+```
+
+FragmentShader：
+```shader
+varying highp vec2 textureCoordinate; // 与VertexShader中一致  
+uniform sampler2D inputImageTexture; // 由外部API传入的纹理采样器，可以从中获取到纹理的像素信息
+void main()
+{
+	gl_FragColor = texture2D(inputImageTexture, textureCoordinate);
+}
+```
+
+
 ## 实例
 ### 灰度算法（算法思路：对每个像素颜色进行采样，然后改变rgb值，乘上灰度图的公认常量）
 ```shader
