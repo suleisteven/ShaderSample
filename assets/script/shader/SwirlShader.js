@@ -19,10 +19,12 @@ let _frag = `
         uniform float radiusX;
         uniform float angleX;
         void main(){
+        
             float vTime = globalTime;
             vec2 positionToUse = v_texCoord;
             vec2 center = vec2(0.5,0.5);
             float dist = distance(center, positionToUse);
+            
             if(dist < radiusX)
             {
                 positionToUse -= center;
@@ -34,7 +36,7 @@ let _frag = `
                     float c = cos(theta);
                     positionToUse = vec2(dot(positionToUse, vec2(c, -s)), dot(positionToUse, vec2(s, c)));
                 }
-                positionToUse += center;    
+                positionToUse += center;
             }
             gl_FragColor = texture2D(CC_Texture0, positionToUse);
         }
@@ -45,7 +47,7 @@ cc.Class({
 
     properties: {
         _angleX : {
-            default : 0,
+            default : 1,
             serializable : false,
         },
         _radiusX : {
@@ -106,8 +108,8 @@ cc.Class({
 
             this._globalTime += dt;
 
-            let m_angleSpeed = 0.5;
-            let m_radiusSpeed = 0.5;
+            let m_angleSpeed = 0.1;
+            let m_radiusSpeed = 0.4;
 
             this._angleX = this._angleX + m_angleSpeed * dt;
             this._radiusX = this._radiusX + m_radiusSpeed * dt;

@@ -48,7 +48,6 @@ cc.Class({
                     `,
             serializable: false
         },
-
     },
 
     editor: {

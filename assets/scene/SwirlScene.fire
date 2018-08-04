@@ -254,7 +254,7 @@
       "__uuid__": "422421d8-51c9-455e-a802-5665797b3864"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -277,10 +277,7 @@
     },
     "_enabled": true,
     "_N$childEnabled": true,
-    "_angleX": 37.4262225001763,
-    "_radiusX": 42.32622250017631,
-    "_globalTime": 124.2170150000835,
-    "_glProgram": null,
+    "_globalTime": 699.1872250005833,
     "_u_iGlobalTime": null,
     "_u_radiusX": null,
     "_u_angleX": null
