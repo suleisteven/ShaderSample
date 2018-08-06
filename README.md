@@ -112,36 +112,6 @@ void main()
 }
 ```
 
-### 旋涡
-```shader
-precision highp float;
-varying vec4 v_fragmentColor;
-varying vec2 v_texCoord;
-uniform float globalTime;
-uniform float radiusX;
-uniform float angleX;
-void main(){
-    float vTime = globalTime;
-    vec2 positionToUse = v_texCoord;
-    vec2 center = vec2(0.5,0.5);
-    float dist = distance(center, positionToUse);
-
-    if(dist < radiusX)
-    {
-        positionToUse -= center;
-        float percent = (radiusX - dist) / radiusX;
-        if(percent < 1.0 && percent >= 0.0)
-        {
-            float theta = percent * percent * angleX * 8.0;
-            float s = sin(theta);
-            float c = cos(theta);
-            positionToUse = vec2(dot(positionToUse, vec2(c, -s)), dot(positionToUse, vec2(s, c)));
-        }
-        positionToUse += center;    
-    }
-    gl_FragColor = texture2D(CC_Texture0, positionToUse);
-}
-```
 
 ### 高斯模糊（"模糊"，就是将图像中每个像素值进行重置的过程，这个过程采用将每一个像素都设置成周边像素的平均值；高斯模糊将周边像素按照权重值进行计算相加）
 
