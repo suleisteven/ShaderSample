@@ -16,6 +16,7 @@ let _frag = `
             void main()
             {
                 vec4 v = texture2D(CC_Texture0, v_texCoord).rgba;
+                v.a = 0.0;
                 float f = v.r * 0.299 + v.g * 0.587 + v.b * 0.114;
                 gl_FragColor = vec4(f, f, f, v.a);
             }
